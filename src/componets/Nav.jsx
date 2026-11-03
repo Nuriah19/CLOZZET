@@ -31,7 +31,7 @@ function Nav() {
             <li className=" mx-8 py-8">Shop</li>
           </ul>
           <ul className="flex justify-between align-center">
-            <li className="mx-4 py-8">{cartIcon}<span className="absolute top-3 right-[-8]size-16 bg-">0</span></li>
+            <li className="mx-4 py-8">{cartIcon}<span className="absolute top-3 right-[-8]size-16 bg-teal-500 rounded-full w-5 px-2">0</span></li>
             <li className="mx-8 py-8">Sign up</li>
             <li className=" mx-8 py-8">Login</li>
           </ul>
