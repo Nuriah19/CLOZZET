@@ -64,9 +64,9 @@ function Footer() {
               <li className="font-light p-3">Follow Us</li>
         </ul>
           <div className="pt-5 pb-8 flex gap-2 mx-auto">
-            <img src={Face} className="w-[20px]"/>
-            <img src={Insta} className="w-[20px]"/>
-            <img src={Twit} className="w-[20px]"/>
+            <img src={Face} className="w-5"/>
+            <img src={Insta} className="w-5"/>
+            <img src={Twit} className="w-5"/>
           </div>
           </div>
         

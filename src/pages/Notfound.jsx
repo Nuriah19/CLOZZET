@@ -1,7 +1,7 @@
 function Notfound(){
     return(
         <>
-        <p>Page not found</p>
+        <p className="text-4xl p-30 font-mono ">Page not found</p>
         </>
     )
 }

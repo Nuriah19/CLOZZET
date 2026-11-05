@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Logo from "../assets/images/logo.svg";
 
 const cartIcon = (
@@ -17,21 +18,32 @@ const cartIcon = (
   </svg>
 );
 
-function Nav() {
+function Nav({cart}) {
   return (
     <nav>
       <div className="container mx-auto">
         <div className="flex justify-between align-center">
           <ul className="flex justify-between align-center">
             <li>
-              <img src={Logo} />
+              <Link to="/">
+                <img src={Logo} />
+              </Link>
             </li>
-            <li className=" mx-8 py-8">Home</li>
+            <Link to="/">
+              <li className=" mx-8 py-8">Home</li>
+            </Link>
             <li className=" mx-8 py-8">About Us</li>
             <li className=" mx-8 py-8">Shop</li>
           </ul>
           <ul className="flex justify-between align-center">
-            <li className="mx-4 py-8">{cartIcon}<span className="absolute top-3 right-[-8]size-16 bg-teal-500 rounded-full w-5 px-2">0</span></li>
+            <Link to="/cart">
+              <li className="mx-4 py-8 relative">
+                {cartIcon}
+                <span className="absolute bottom-11 -right-2 size-16 bg-teal-500 rounded-full w-5 h-5 text-white px-2 flex justify-center items-center">
+                  {cart.length}
+                </span>
+              </li>
+            </Link>
             <li className="mx-8 py-8">Sign up</li>
             <li className=" mx-8 py-8">Login</li>
           </ul>
@@ -41,8 +53,3 @@ function Nav() {
   );
 }
 export default Nav;
-//  <div class="nav-icons">
-//                 <img  class="icon-link" src="images/shopping-cart.png" width="30"> <span class="cart-icon">0</span>
-//                 <img  src="images/avatar.png" width="30"></a>
-            
-//             </div>

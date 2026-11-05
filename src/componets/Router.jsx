@@ -1,20 +1,20 @@
+import {useState} from "react"
 import { BrowserRouter,Routes,Route } from "react-router"
 import Home from "../pages/Home"
 import Cart from "../pages/Cart"
-
+import Notfound from "../pages/Notfound"
+import Layout from "../pages/Layout"
 
 
 function Router(){
+    const [cart,setCart]=useState([])
     return(
         <BrowserRouter>
     <Routes>
-        <Route path="/" element={<Home/>}>
-        <Route path="/" element={<Cart/>}>
-        <Route path="*" element={<Notfound/>}>
+        <Route path="/" element={<Layout cart={cart}><Home cart={cart} setCart={setCart}/></Layout>}/>
+        <Route path="/cart" element={<Layout cart={cart}><Cart cart={cart} setCart={setCart}/></Layout>}/>
+        <Route path="*" element={<Layout cart={cart}><Notfound cart={cart}/></Layout>}/>
 
-        </Route>
-        </Route>
-        </Route>
     </Routes>
 
         </BrowserRouter>

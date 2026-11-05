@@ -1,22 +1,22 @@
-import Nav from "../componets/Nav";
+import background from "../assets/images/hero-background.png";
 import Hero from "../componets/Hero";
-import Footer from "../componets/Footer";
+
 import Catergories from "../componets/Categories";
 import Collection from "../componets/Collections";
-function Home() {
+import Casuals from "../componets/Casuals"
+function Home({cart,setCart}) {
   return (
     <>
-      <header className="bg-[url(../../src/assets/images/hero-background.png)] bg-no-repeat bg-right bg-contain">
-        <Nav />
+      <header>
+        <img src={background} className="absolute right-0 -top-2.5 z-[-1]" />
         <Hero />
-    
+      </header>
+
       <main>
-      <Catergories/>
-      <Collection/>
-         </main>
-      <Footer />
-          </header>
-     
+        <Catergories />
+        <Collection cart={cart} setCart={setCart}/>
+        <Casuals/>
+      </main>
     </>
   );
 }
