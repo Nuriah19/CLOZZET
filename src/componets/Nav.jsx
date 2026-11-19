@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import Logo from "../assets/images/logo.svg";
+import { stateContext } from "../context/State";
+import { useContext } from "react";
 
 const cartIcon = (
   <svg
@@ -18,7 +20,8 @@ const cartIcon = (
   </svg>
 );
 
-function Nav({cart}) {
+function Nav() {
+  const { cart, setCart } = useContext(stateContext);
   return (
     <nav>
       <div className="container mx-auto">
@@ -32,8 +35,8 @@ function Nav({cart}) {
             <Link to="/">
               <li className=" mx-8 py-8">Home</li>
             </Link>
-            <li className=" mx-8 py-8">About Us</li>
-            <li className=" mx-8 py-8">Shop</li>
+            <Link to="/Aboutus"><li className=" mx-8 py-8">About Us</li></Link>
+            <Link to="/Shop"><li className=" mx-8 py-8">Shop</li></Link>
           </ul>
           <ul className="flex justify-between align-center">
             <Link to="/cart">
@@ -44,8 +47,12 @@ function Nav({cart}) {
                 </span>
               </li>
             </Link>
-            <li className="mx-8 py-8">Sign up</li>
-            <li className=" mx-8 py-8">Login</li>
+            <Link to="/SignUp">
+              <li className="mx-8 py-8">Sign up</li>
+            </Link>
+            <Link to="/Login">
+              <li className=" mx-8 py-8">Login</li>
+            </Link>
           </ul>
         </div>
       </div>

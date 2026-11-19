@@ -1,6 +1,5 @@
 import background from "../assets/images/hero-background.png";
 import Hero from "../componets/Hero";
-
 import Catergories from "../componets/Categories";
 import Collection from "../componets/Collections";
 import Casuals from "../componets/Casuals"

@@ -46,3 +46,4 @@ function Casuals() {
   );
 }
 export default Casuals;
+

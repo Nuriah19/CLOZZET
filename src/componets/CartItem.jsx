@@ -1,3 +1,6 @@
+import { stateContext } from "../context/State";
+import { useContext } from "react";
+
 const trashIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -16,14 +19,38 @@ const trashIcon = (
 );
 
 function CartItem({ image, title, subtitle, price, quantity }) {
- function handleIncrement(){
-  cart.map(item=>{
-    if(item.title==title){
-      return{...item, quantity:item.quantity+1}
-    }
-  })
-  return item
- }
+  const { cart, setCart } = useContext(stateContext);
+  function handleIncrement() {
+    const cartCopy = cart.map((item) => {
+      if (item.title == title) {
+        return { ...item, quantity: item.quantity + 1 };
+      } else {
+        return item;
+      }
+    });
+
+    setCart(cartCopy);
+  }
+  function handleDecrement() {
+    const cartCopy = cart.map((item) => {
+      if (item.title == title) {
+        return { ...item, quantity: item.quantity - 1 };
+      } else {
+        return item;
+      }
+    });
+
+    setCart(cartCopy);
+  }
+  function handleDelete() {
+    const cartProducts = cart.filter((item) => {
+      if (item.title !== title) {
+        return item;
+      }
+    });
+    setCart(cartProducts);
+  }
+
   return (
     <div className="flex items-center">
       <div>
@@ -39,16 +66,33 @@ function CartItem({ image, title, subtitle, price, quantity }) {
       <div>
         <div className="flex justify-center py-25 px-50 ">
           <div className="flex items-center border border-grey-400 rounded bg-grey-700 px-3 py-1 gap-4 text-black">
-            <span className="cursor-pointer">-</span>
-            <span className="font-semibold text-gray-800">{quantity}</span>
-            <span className="cursor-pointer">+</span>
-            <span className="text-purple-500">{trashIcon}</span>
+            <button
+              className="submit cursor-pointer"
+              onClick={handleDecrement}
+              disabled={quantity == 1}
+            >
+              -
+            </button>
+            <button className="font-semibold text-gray-800">{quantity}</button>
+            <button
+              className=" submit cursor-pointer"
+              onClick={handleIncrement}
+            >
+              +
+            </button>
+            <button className=""></button>
           </div>
         </div>
       </div>
 
       <div>
-        <p className="text-right font-medium text-black p-20">{price}</p>
+        <p className="text-right font-medium text-black p-20">
+          {price * quantity}
+        </p>
+      </div>
+
+      <div className="flex text-purple-500" onClick={handleDelete}>
+        {trashIcon}
       </div>
     </div>
   );

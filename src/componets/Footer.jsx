@@ -8,7 +8,7 @@ function Footer() {
   return (
     <footer className="bg-[#f1f1f0] pt-12 pb-8 px-6 text-[#2d3748]">
       <div className="container mx-auto ">
-        {/* FIRST TEXT */}
+        
         <div className="text-center mb-16">
           <h1 className="text-3xl font-semi-bold mb-6">
             Subscribe & get up to 30% OFF
@@ -27,7 +27,7 @@ function Footer() {
           </form>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 text-sm">
-          {/* BRAND INFO */}
+  
           <div className="space-y-3">
             <img src={Logo} />
             <p>
@@ -35,7 +35,7 @@ function Footer() {
               one priority. Confuse your mirror by our trendy outfits.
             </p>
           </div>
-          {/* STORE LINK */}
+    
           <div className="py-5 px-10">
         <h1 className="text-1.5xl font-bold mb-6 " >Store</h1>
         <ul className="space-y-2 ">
@@ -45,7 +45,7 @@ function Footer() {
                <li>Collection</li>
         </ul>
           </div>
-          {/* HELP LINKS */}
+          
             <div className="py-5 px-10">
         <h1 className="text-1.5xl font-bold mb-6 ">Help</h1>
         <ul className="space-y-2 ">
@@ -55,7 +55,7 @@ function Footer() {
                <li>Track Your Order</li>
         </ul>
           </div>
-          {/* CONTACT lINK */}
+          
              <div className="py-2 px-5">
         <h1 className="text-1.5xl font-bold mb-6 ">Contact Us</h1>
         <ul className="space-y-2 ">

@@ -1,10 +1,10 @@
 import Router from "./componets/Router";
-
+import StateProvider from "./context/State";
 function App() {
   return (
-    <div className="App">
+    <StateProvider>
       <Router/>
-    </div>
+    </StateProvider>
   );
 }
 

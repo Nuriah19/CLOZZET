@@ -1,5 +1,9 @@
+import { stateContext } from "../context/State";
+import { useContext } from "react";
+
 import CartItem from "./CartItem";
-function CartItems({ cart }) {
+function CartItems() {
+    const {cart, setCart} = useContext(stateContext);
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-4 items-start">
@@ -15,12 +19,14 @@ function CartItems({ cart }) {
         {cart &&
           cart.map((item) => {
             return (
-              <div className="flex items-center gap-3">
+              <div key={item.title}>
                 <CartItem
                   image={item.image}
                   title={item.title}
                   price={item.price}
-                  quantity={1}
+                  quantity={item.quantity}
+                  setCart={setCart}
+                  cart={cart}
                 />
               </div>
             );

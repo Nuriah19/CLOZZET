@@ -1,9 +1,11 @@
 import { Link } from "react-router";
 import CartSummary from "../componets/CartSummary";
 import CartItems from "../componets/CartItems";
+import { useContext } from "react";
+import { stateContext } from "../context/State";
 
-
-function Cart({ cart, setCart }) {
+function Cart() {
+   const {cart, setCart} = useContext(stateContext);
   return (
     <main>
       {cart.length == 0 ? (
@@ -19,8 +21,8 @@ function Cart({ cart, setCart }) {
         </div>
       ) : (
         <div className="flex items-start">
-          <CartItems cart={cart} />
-          <CartSummary />
+          <CartItems cart={cart} setCart={setCart} />
+          <CartSummary cart={cart} />
         </div>
       )}
     </main>

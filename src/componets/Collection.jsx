@@ -1,3 +1,5 @@
+import { stateContext } from "../context/State";
+import { useContext } from "react";
 
 const heartIcon = (
   <svg
@@ -16,36 +18,34 @@ const heartIcon = (
   </svg>
 );
 
-function Collection({ image, title, price, cart, setCart }){
-  function handleAddToCart(e, product){
+function Collection({ image, title, price }) {
+  function handleAddToCart(e, product) {
     if (e.target.textContent.toLowerCase() == "add to cart") {
-      setCart(prev=>[...prev,product])
-      e.target.textContent="Added to Cart"
+      setCart((prev) => [...prev, product]);
+      e.target.textContent = "Added to Cart";
     }
   }
+  const { cart, setCart } = useContext(stateContext);
   return (
-    
-      <div className="flex flex-col items-center text-center">
-        <div className=" overflow-hidden rounded-sm bg-[#f1f1f0]  relative group w-75 h-75 ">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-contain"
-          />
-      
-   <button onClick={e=>handleAddToCart(e,{title,image,price})}className="hidden absolute bottom-4 left-0 bg-teal-500 w-[90%] translate-x-4 py-3 text-sm font-medium text-white group-hover:opacity-100 group-hover:block">
-            ADD TO CART
-          </button>  
-        </div>
-        <div className="flex">
-          <p className="p-6">{title}</p>
-          <p className="p-3">{price}</p>
-          {heartIcon}
-        </div>
-       
-      </div>
-      
+    <div className="flex flex-col items-center text-center">
+      <div className=" overflow-hidden rounded-sm bg-[#f1f1f0]  relative group w-75 h-75 ">
+        <img src={image} alt={title} className="w-full h-full object-contain" />
 
+        <button
+          onClick={(e) =>
+            handleAddToCart(e, { title, image, price, quantity: 1 })
+          }
+          className="hidden absolute bottom-4 left-0 bg-teal-500 w-[90%] translate-x-4 py-3 text-sm font-medium text-white group-hover:opacity-100 group-hover:block"
+        >
+          ADD TO CART
+        </button>
+      </div>
+      <div className="flex">
+        <p className="p-6">{title}</p>
+        <p className="p-3">{price}</p>
+        {heartIcon}
+      </div>
+    </div>
   );
 }
 export default Collection;

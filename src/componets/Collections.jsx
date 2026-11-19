@@ -4,9 +4,6 @@ import round from "../assets/images/sweatshirts.png";
 import pallazo from "../assets/images/pallazo.png";
 import denim from "../assets/images/denim.png";
 
-
-
-
 function Collections({cart,setCart}) {
   return (
     <>
