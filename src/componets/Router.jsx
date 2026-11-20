@@ -61,7 +61,7 @@ function Router() {
           }
         />
         <Route
-          path="/SignUp"
+          path="/signUp"
           element={
             <Layout>
               <SignUp />
@@ -69,7 +69,7 @@ function Router() {
           }
         />
         <Route
-          path="/Login"
+          path="/login"
           element={
             <Layout>
               <Login />
@@ -77,7 +77,7 @@ function Router() {
           }
         />
         <Route
-          path="/Single"
+          path="/single"
           element={
             <Layout>
               <Single />
@@ -85,7 +85,7 @@ function Router() {
           }
         />
         <Route
-          path="/Aboutus"
+          path="/aboutus"
           element={
             <Layout>
               <Aboutus />
@@ -93,7 +93,7 @@ function Router() {
           }
         />
         <Route
-          path="/Shop"
+          path="/shop"
           element={
             <Layout>
               <Shop />
@@ -101,21 +101,21 @@ function Router() {
           }
         />
 
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
-          path="/Add"
+          path="/add"
           element={
             <Layout>
               <Add />
             </Layout>
           }
         />
-        <Route path="/Customer" element={<Customer />} />
-        <Route path="/Products" element={<Products />} />
-        <Route path="/Settings" element={<Settings />} />
-        <Route path="/Sidebar" element={<Sidebar />} />
-        <Route path="/Week" element={<Week />} />
-        <Route path="/Sales" element={<Sales />} />
+        <Route path="/customer" element={<Customer />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/sidebar" element={<Sidebar />} />
+        <Route path="/week" element={<Week />} />
+        <Route path="/sales" element={<Sales />} />
       </Routes>
     </BrowserRouter>
   );

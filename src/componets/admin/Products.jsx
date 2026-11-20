@@ -38,6 +38,7 @@ function Products() {
     <div className="min-h-screen bg-[#F1F1F0] p-4 sm:p-6 md:p-8">
       <header className="mb-8">
         <p className="text-sm font-medium">CLOZZET / ADMIN / PRODUCTS</p>
+        <Link to="/dashboard"><p className="text-xs text-teal-400">←Back To Dashboard</p></Link>
         <h1 className="text-3xl font-bold mt-2">Products</h1>
         <p className="mt-2">Manage and view your store inventory.</p>
       </header>

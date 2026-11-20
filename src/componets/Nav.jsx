@@ -28,7 +28,7 @@ function Nav() {
         <div className="flex justify-between align-center">
           <ul className="flex justify-between align-center">
             <li>
-              <Link to="/">
+              <Link to="/dashboard">
                 <img src={Logo} />
               </Link>
             </li>

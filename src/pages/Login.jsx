@@ -4,15 +4,48 @@ import img from "../assets/images/google.png";
 import bg from "../assets/images/login.png";
 import { Eye } from "lucide-react";
 import { EyeOff } from "lucide-react";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword,  } from "firebase/auth";
+import { useNavigate } from "react-router";
 function Login() {
   const [formData, setFormData] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const navigate = useNavigate();
   function handleChange(e) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
   function handleSubmit(e) {
     e.preventDefault();
     console.log(formData);
+    const errors = {};
+    (!formData.email || formData.email === "") && (errors.email = true);
+    (!formData.password || formData.password === "") &&
+      (errors.password = true);
+    console.log(errors);
+    console.log(formData);
+
+    setFormErrors(errors);
+     // AUTHENTICATION
+        if (Object.keys(formErrors).length === 0) {
+          const { email, password } = formData;
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Login
+              const user = userCredential.user;
+              
+              if (user) navigate("/dashboard");
+              console.log(user);
+            })
+    
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              console.log(errorMessage);
+              console.log(errorCode)
+              // ..
+            });
+        }
   }
   return (
     <div className="min-h-screen w-full flex flex-col lg:flex-row">
@@ -21,25 +54,32 @@ function Login() {
           Login Your Account
         </h1>
 
+ <p className="font-semibold text-center text-xs text-red-400 mb-2 mt-1 pr-4 ">
+          {Object.keys(formErrors).length !== 0
+            ? "Please fill out this field"
+            : null}
+        </p>
         <form className="w-full space-y-4" onSubmit={(e) => handleSubmit(e)}>
           <input
             name="email"
             placeholder="Email Address"
-            required
-            className="w-full px-4 py-3 rounded-full border border-gray-200 shadow-sm text-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition"
+          
+            className={`w-full${formErrors.email ? "border-red-300" : "border-gray-200"} px-4 py-3 rounded-full border border-gray-200 shadow-sm text-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition`}
             onChange={(e) => handleChange(e)}
           />
 
           <div className="flex items-center pr-4 w-full  rounded-full border border-gray-200 shadow-sm text-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 transition">
             <input
-              type={showPassword?"text":"password"}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
-              required
-              className=" flex-1 px-4 py-3 outline-none"
+              
+              className={`flex-1 px-4 py-3 outline-none ${formErrors.password ? "border-red-300" : "border-gray-200"}`}
               onChange={(e) => handleChange(e)}
             />
-            <div onClick={()=>setShowPassword(!showPassword)} className=" ">{showPassword ? <EyeOff /> : <Eye />}</div>
+            <div onClick={() => setShowPassword(!showPassword)} className=" ">
+              {showPassword ? <EyeOff /> : <Eye />}
+            </div>
           </div>
 
           <div className="flex item-center justify-between text-x5">
